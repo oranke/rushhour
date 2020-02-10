@@ -13,11 +13,13 @@ namespace cpark
         public int[] length;
         public int[] occupancy;
 
-        public Int64 hash;
+        //public Int64 hash;
+        //private Int64 hash;
 
         public park()
         {
-            hash = width = height = count = 0;
+            //hash = 
+            width = height = count = 0;
             
             pos = alignment = length = occupancy = new int[0];
         }
