@@ -22,10 +22,8 @@ namespace cpark
     public class parkSpaceLogic
     {
    
-        static public searchResults SpaceSearch2(Queue<park> current)
+        static public searchResults SpaceSearch2(Queue<park> current, uint heroIndex = 0)
         {
-            Queue<park> neighbours = new Queue<park>();
-
             Queue<park> solutions = new Queue<park>();
 
             Dictionary<int, int> D = new Dictionary<int, int>();
@@ -38,7 +36,7 @@ namespace cpark
 
             while (current.Count > 0) // exit loop when current nodes are empty (graph is fully searched)
             {
-                neighbours = new Queue<park>();
+                Queue<park> neighbours = new Queue<park>();
 
                 has_nodes = false;
 
@@ -56,7 +54,7 @@ namespace cpark
 
                     D.Add(node_hash, distance_counter);
 
-                    if (node.pos[0] == (node.width * 3 - 2)) solutions.Enqueue(node);                    
+                    if (node.pos[heroIndex] == (node.width * 3 - 2)) solutions.Enqueue(node);                    
                     
                     // end of state checking
 
@@ -70,20 +68,20 @@ namespace cpark
 
                         neighbours.Enqueue(next_node);
 
-                        if (D.Count > 20000)
-                        if (false )
-                        {
-                            // state graph too large, bailing ...
+                         if (D.Count > 20000)
+                         if (false )
+                         {
+                             // state graph too large, bailing ...
 
-                            searchResults r = new searchResults();
+                             searchResults r = new searchResults();
 
-                            r.states = -1;
+                             r.states = -1;
 
-                            r.solutions = solutions;
+                             r.solutions = solutions;
 
-                            return r;
+                             return r;
 
-                        }
+                         }
                     }
 
                 }
